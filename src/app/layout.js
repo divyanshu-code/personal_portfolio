@@ -1,5 +1,7 @@
 import { Space_Grotesk, Syne } from "next/font/google";
 import "./globals.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space",
@@ -32,7 +34,16 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${spaceGrotesk.variable} ${syne.variable}`}
     >
-      <body className="noise">{children}</body>
+      <body className="noise">
+        <ToastContainer
+          position="bottom-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          theme="dark"
+          pauseOnHover
+        />
+        {children}
+      </body>
     </html>
   );
 }
