@@ -154,12 +154,12 @@ export default function Hero() {
       }} />
 
       <div className="h-eyebrow" style={{
-        display: 'flex', alignItems: 'center', gap: 16, marginBottom: 36,
+        display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24,
       }}>
-        <span style={{ width: 48, height: 1, background: 'var(--accent)', display: 'block', flexShrink: 0 }} />
-        <span className="label">Available for work</span>
+        <span className="w-[5vw]" style={{ height: 1, background: 'var(--accent)', display: 'block', flexShrink: 0 }} />
+        <span className="label lg:text-[10px] text-[8px]">Available for work</span>
         <span style={{
-          marginLeft: 4,
+          marginLeft: 0,
           width: 7, height: 7,
           borderRadius: '50%',
           background: 'var(--accent)',
@@ -169,23 +169,23 @@ export default function Hero() {
       </div>
 
       {/* ── Content ── */}
-      <div className='flex flex-col items-center  justify-center ml-40' style={{ maxWidth: 1100, width: '100%', zIndex: 2 }}>
+      <div className='flex flex-col  md:items-center justify-center ml-0 md:ml-40 text-center md:text-center' style={{ maxWidth: 1000, width: '100%', zIndex: 2 }}>
 
         {/* Role typewriter */}
-        <div className="h-role-line mt-20" style={{
+        <div className="h-role-line lg:mt-20 mt-10" style={{
           display: 'flex', alignItems: 'center', gap: 14, marginBottom: 10, flexWrap: 'wrap',
         }}>
-          <span className="label" style={{ color: 'var(--text-muted)' }}>I am a</span>
+          <span className="label lg:text-[13px] text-[10px] ml-10 lg:ml-0" style={{ color: 'var(--text-muted)' }}>I am a</span>
           <span
             ref={roleRef}
+            className='lg:text-[20px] text-[18px]'
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(18px, 2vw, 24px)',
               fontWeight: 700,
               color: 'var(--accent)',
               borderRight: '2px solid var(--accent)',
               paddingRight: 5,
-              minWidth: 260,
+              minWidth: 200,
               animation: 'caretBlink 0.8s step-end infinite',
               display: 'inline-block',
             }}
@@ -194,13 +194,12 @@ export default function Hero() {
 
         {/* Name */}
         <h1
-          className="h-name"
+          className="h-name lg:text-[65px] text-[40px]"
           style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(10px, 11vw, 80px)',
             fontWeight: 800,
             lineHeight: 0.91,
-            letterSpacing: '-0.05em',
+            letterSpacing: '-0.05em', 
             color: 'var(--text-primary)',
             margin: '0 0 20px',
           }}
@@ -213,7 +212,7 @@ export default function Hero() {
           className="h-intro"
           style={{
             maxWidth: 520,
-            fontSize: 'clamp(15px, 1.4vw, 18px)',
+            fontSize: 'clamp(16px, 2vw, 18px)',
             lineHeight: 1.85,
             color: 'var(--text-secondary)',
             fontWeight: 300,
@@ -225,9 +224,7 @@ export default function Hero() {
         </p>
 
         {/* CTA row */}
-        <div className="h-cta-row" style={{
-          display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap',
-        }}>
+        <div className="h-cta-row flex flex-wrap items-center justify-center md:justify-start gap-4">
           <a
             href="#projects"
             id="hero-cta-projects"
@@ -284,14 +281,9 @@ export default function Hero() {
 
         {/* Stats */}
         <div
-          className="h-stats"
+          className="h-stats flex flex-wrap justify-center md:justify-start gap-8 md:gap-16 mt-16 pt-12"
           style={{
-            display: 'flex',
-            gap: 'clamp(32px, 5vw, 64px)',
-            marginTop: 70,
-            paddingTop: 48,
             borderTop: '1px solid var(--border)',
-            flexWrap: 'wrap',
           }}
         >
           {[
@@ -301,7 +293,7 @@ export default function Hero() {
             <div key={label}>
               <div style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(10px, 3.5vw, 42px)',
+                fontSize: 'clamp(36px, 6vw, 42px)',
                 fontWeight: 800,
                 letterSpacing: '-0.04em',
                 color: 'var(--text-primary)',

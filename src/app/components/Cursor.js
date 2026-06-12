@@ -6,6 +6,13 @@ export default function Cursor() {
   const innerRef = useRef(null);
 
   useEffect(() => {
+    // Disable cursor logic entirely on mobile or touch devices
+    if (window.matchMedia('(max-width: 768px)').matches || window.matchMedia('(pointer: coarse)').matches) {
+      if (outerRef.current) outerRef.current.style.display = 'none';
+      if (innerRef.current) innerRef.current.style.display = 'none';
+      return;
+    }
+
     const outer = outerRef.current;
     const inner = innerRef.current;
     if (!outer || !inner) return;
