@@ -216,7 +216,7 @@ export default function Projects() {
               return (
                 <motion.article
                   key={p.num}
-                  className="project-card w-[85vw] sm:w-[320px] md:w-[480px] shrink-0 relative"
+                  className="project-card w-[70vw] sm:w-[280px] md:w-[480px] shrink-0 relative"
                   animate={{
                     opacity: isSiblingHovered ? 0.3 : 1
                   }}
@@ -225,7 +225,7 @@ export default function Projects() {
                 >
                   {/* Card Visual — Project Screenshot */}
                   <div
-                    className="project-card-img rounded-2xl overflow-hidden relative cursor-pointer h-[220px] md:h-[300px]"
+                    className="project-card-img rounded-2xl overflow-hidden relative cursor-pointer h-[200px] lg:h-[250px]"
                     style={{ background: p.gradient }}
                     onClick={() => setSelectedProject(p)}
                   >
@@ -233,14 +233,14 @@ export default function Projects() {
                     <img
                       src={p.image}
                       alt={`${p.title} screenshot`}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full lg:h-full h-[250px]  object-cover"
                     />
 
                     {/* Gradient overlay so bottom text stays readable */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.65)] via-[rgba(0,0,0,0.1)] to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.65)] via-[rgba(0, 0, 0, 0.12)] to-transparent pointer-events-none" />
 
                     {/* Project number watermark */}
-                    <span className="watermark absolute bottom-4 right-6 font-display text-[60px] md:text-[80px] font-extrabold text-[rgba(255,255,255,0.12)] leading-none pointer-events-none ">
+                    <span className="watermark absolute bottom-4 right-6 font-display text-[60px] md:text-[80px] font-extrabold text-[rgba(255,255,255,0.18)] leading-none pointer-events-none ">
                       {p.num}
                     </span>
 
@@ -251,17 +251,17 @@ export default function Projects() {
                     />
                   </div>
 
-                  <div className="project-card-body mt-3 md:mt-4">
+                  <div className="px-5 mt-2 md:mt-4">
                     <div className="project-card-num text-[var(--accent)] text-[12px] md:text-[13px] font-bold mb-2">{p.num}</div>
-                    <h3 className="project-card-title font-display text-[26px] md:text-[32px] font-bold text-[var(--text-primary)] mb-3">{p.title}</h3>
-                    <p className="project-card-desc text-[var(--text-secondary)] leading-[1.6] mb-5 text-[13px] md:text-[15px]">{p.desc}</p>
+                    <h3 className="project-card-title font-display lg:text-[25px] text-[18px] font-bold text-[var(--text-primary)] mb-2 md:mb-3">{p.title}</h3>
+                    <p className="project-card-desc text-[var(--text-secondary)] leading-[1.6] mb-4 md:mb-5 text-[13px] lg:text-[15px] line-clamp-4 md:line-clamp-none">{p.desc}</p>
                     <div className="project-card-tags flex gap-2 flex-wrap mb-6">
                       {p.tags.map((t) => (
                         <span key={t} className="project-tag px-3 py-1 bg-[rgba(255,255,255,0.03)] border border-[var(--border)] rounded-full text-[11px] md:text-[12px] text-[var(--text-muted)]">{t}</span>
                       ))}
                     </div>
                     <button
-                      className="project-card-link bg-transparent border-none text-[var(--text-primary)] flex items-center gap-2 text-[13px] md:text-[14px] font-semibold cursor-pointer p-0"
+                      className="project-card-link bg-transparent border-none text-[var(--text-primary)] flex items-center gap-2 text-[10px]  font-semibold cursor-pointer p-0"
                       onClick={() => setSelectedProject(p)}
                     >
                       View details
