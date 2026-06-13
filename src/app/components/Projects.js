@@ -152,7 +152,8 @@ export default function Projects() {
 
       const getScrollAmount = () => {
         let trackWidth = track.scrollWidth;
-        return -(trackWidth - window.innerWidth + 96); // 96 for side paddings
+        let paddingOffset = window.innerWidth < 768 ? 40 : 96;
+        return -(trackWidth - window.innerWidth + paddingOffset);
       };
 
       const tween = gsap.to(track, {
@@ -183,36 +184,30 @@ export default function Projects() {
       <section
         id="projects"
         ref={sectionRef}
-        style={{ paddingTop: '140px', position: 'relative', background: 'var(--base-2)', borderTop: '1px solid var(--border)' }}
+        className="pt-[80px] md:pt-[120px] relative bg-[var(--base-2)] border-t border-[var(--border)]"
         aria-label="Projects"
       >
-        <div style={{ padding: '0 48px' }}>
-          <div className="projects-header reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 24 }}>
+        <div className="px-5 md:px-12">
+          <div className="projects-header reveal flex flex-col md:flex-row justify-between items-start md:items-end mb-6 gap-2 md:gap-0">
             <div>
-              <span className="label" style={{ marginBottom: 16, display: 'block' }}> — Selected Work</span>
-              <h2 className="display-md" style={{ color: 'var(--text-primary)', margin: 0 }}>
+              <span className="label mb-2 block text-[12px] lg:text-[15px]"> — Selected Work</span>
+              <h2 className="display-md text-[var(--text-primary)] m-0">
                 Things I've<br />
                 <span style={{ color: 'var(--accent)' }}>built</span>
               </h2>
             </div>
-            <div className="projects-count" aria-hidden="true">0{PROJECTS.length}</div>
+            <div className="projects-count absolute right-0 top-20 text-[50px] lg:text-[90px]" aria-hidden="true">0{PROJECTS.length}</div>
           </div>
-          <p className="reveal" style={{ color: 'var(--text-muted)', fontSize: 13, letterSpacing: '0.1em', marginBottom: 48, textTransform: 'uppercase' }}>
+          <p className="reveal text-[var(--text-muted)] text-[11px] md:text-[13px] tracking-[0.1em] mb-8 md:mb-12 uppercase">
             ← scroll to explore →
           </p>
         </div>
 
         {/* Horizontal track wrapper pinned by GSAP */}
-        <div ref={trackWrapperRef} style={{ width: '100%', overflow: 'hidden', paddingBottom: '100px' }}>
+        <div ref={trackWrapperRef} className="w-full overflow-hidden pb-[60px] md:pb-[100px]">
           <div
             ref={trackRef}
-            style={{
-              display: 'flex',
-              gap: '40px',
-              padding: '0 48px',
-              width: 'max-content',
-              willChange: 'transform'
-            }}
+            className="flex gap-5 md:gap-10 px-5 md:px-12 w-max will-change-transform"
           >
             {PROJECTS.map((p) => {
               const isHovered = hoveredId === p.num;
@@ -221,78 +216,53 @@ export default function Projects() {
               return (
                 <motion.article
                   key={p.num}
-                  className="project-card "
-                  style={{ width: '480px', flexShrink: 0, position: 'relative' }}
+                  className="project-card w-[85vw] sm:w-[320px] md:w-[480px] shrink-0 relative"
                   animate={{
-
                     opacity: isSiblingHovered ? 0.3 : 1
                   }}
-
                   onHoverStart={() => setHoveredId(p.num)}
                   onHoverEnd={() => setHoveredId(null)}
                 >
                   {/* Card Visual — Project Screenshot */}
                   <div
-                    className="project-card-img"
-                    style={{ background: p.gradient, height: '300px', borderRadius: '16px', overflow: 'hidden', position: 'relative', cursor: 'pointer' }}
+                    className="project-card-img rounded-2xl overflow-hidden relative cursor-pointer h-[220px] md:h-[300px]"
+                    style={{ background: p.gradient }}
                     onClick={() => setSelectedProject(p)}
                   >
                     {/* Screenshot */}
                     <img
                       src={p.image}
                       alt={`${p.title} screenshot`}
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        width: '100%',
-                        height: '100%',
-                         
-                      }}
+                      className="absolute inset-0 w-full h-full object-cover"
                     />
 
                     {/* Gradient overlay so bottom text stays readable */}
-                    <div style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 60%, transparent 100%)',
-                      pointerEvents: 'none',
-                    }} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.65)] via-[rgba(0,0,0,0.1)] to-transparent pointer-events-none" />
 
                     {/* Project number watermark */}
-                    <span style={{
-                      position: 'absolute', bottom: 16, right: 24,
-                      fontFamily: 'var(--font-display)',
-                      fontSize: 80, fontWeight: 800,
-                      color: 'rgba(255,255,255,0.12)',
-                      lineHeight: 1,
-                      pointerEvents: 'none',
-                    }}>
+                    <span className="watermark absolute bottom-4 right-6 font-display text-[60px] md:text-[80px] font-extrabold text-[rgba(255,255,255,0.12)] leading-none pointer-events-none ">
                       {p.num}
                     </span>
 
                     {/* Accent hover glow ring */}
-                    <div style={{
-                      position: 'absolute', inset: 0,
-                      borderRadius: '16px',
-                      boxShadow: isHovered ? `inset 0 0 0 1px ${p.color}55` : 'none',
-                      transition: 'box-shadow 0.3s ease',
-                      pointerEvents: 'none',
-                    }} />
+                    <div
+                      className="absolute inset-0 rounded-2xl pointer-events-none transition-shadow duration-300"
+                      style={{ boxShadow: isHovered ? `inset 0 0 0 1px ${p.color}55` : 'none' }}
+                    />
                   </div>
 
-                  <div className="project-card-body" style={{ marginTop: '10px' }}>
-                    <div className="project-card-num" style={{ color: 'var(--accent)', fontSize: '13px', fontWeight: 700, marginBottom: '8px' }}>{p.num}</div>
-                    <h3 className="project-card-title" style={{ fontFamily: 'var(--font-display)', fontSize: '32px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '12px' }}>{p.title}</h3>
-                    <p className="project-card-desc" style={{ color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '20px', fontSize: '15px' }}>{p.desc}</p>
-                    <div className="project-card-tags" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '24px' }}>
+                  <div className="project-card-body mt-3 md:mt-4">
+                    <div className="project-card-num text-[var(--accent)] text-[12px] md:text-[13px] font-bold mb-2">{p.num}</div>
+                    <h3 className="project-card-title font-display text-[26px] md:text-[32px] font-bold text-[var(--text-primary)] mb-3">{p.title}</h3>
+                    <p className="project-card-desc text-[var(--text-secondary)] leading-[1.6] mb-5 text-[13px] md:text-[15px]">{p.desc}</p>
+                    <div className="project-card-tags flex gap-2 flex-wrap mb-6">
                       {p.tags.map((t) => (
-                        <span key={t} className="project-tag" style={{ padding: '6px 12px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border)', borderRadius: '100px', fontSize: '12px', color: 'var(--text-muted)' }}>{t}</span>
+                        <span key={t} className="project-tag px-3 py-1 bg-[rgba(255,255,255,0.03)] border border-[var(--border)] rounded-full text-[11px] md:text-[12px] text-[var(--text-muted)]">{t}</span>
                       ))}
                     </div>
                     <button
-                      className="project-card-link"
+                      className="project-card-link bg-transparent border-none text-[var(--text-primary)] flex items-center gap-2 text-[13px] md:text-[14px] font-semibold cursor-pointer p-0"
                       onClick={() => setSelectedProject(p)}
-                      style={{ background: 'transparent', border: 'none', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: 600, cursor: 'pointer', padding: 0 }}
                     >
                       View details
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -315,13 +285,13 @@ export default function Projects() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
+            className="p-4 md:p-10"
             style={{
               position: 'fixed', inset: 0,
               background: 'rgba(10, 10, 15, 0.95)',
               backdropFilter: 'blur(10px)',
               zIndex: 100,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              padding: '40px'
             }}
             onClick={(e) => {
               // Close if backdrop is clicked
@@ -363,10 +333,10 @@ export default function Projects() {
 
               {/* Overlay Content */}
 
-              <div style={{ padding: '48px' }}>
+              <div className="p-6 md:p-12">
                 <div style={{ color: 'var(--accent)', fontSize: '14px', fontWeight: 700, marginBottom: '12px' }}>Project {selectedProject.num}</div>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '48px', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '24px', lineHeight: 1 }}>{selectedProject.title}</h2>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '18px', lineHeight: 1.7, marginBottom: '40px' }}>
+                <h2 className="text-[32px] md:text-[48px]" style={{ fontFamily: 'var(--font-display)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '24px', lineHeight: 1 }}>{selectedProject.title}</h2>
+                <p className="text-[15px] md:text-[18px]" style={{ color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '40px' }}>
                   {selectedProject.details}
                 </p>
 
@@ -386,7 +356,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="btn-primary"
                     style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
-                    >
+                  >
                     View Live Site
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                       <path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -399,7 +369,7 @@ export default function Projects() {
                     style={{ padding: '16px 32px', color: 'var(--text-primary)', border: '1px solid var(--border)', borderRadius: '100px', textDecoration: 'none', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '8px' }}
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .268.18.58.688.482C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                      <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .268.18.58.688.482C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
                     </svg>
                     GitHub Repo
                   </a>
