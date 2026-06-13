@@ -92,13 +92,13 @@ export default function About() {
     >
       <div className="section-inner">
         {/* Section label */}
-        <div style={{ marginBottom: 80 }}>
-          <span className="label"> — About</span>
+        <div style={{ marginBottom: 'clamp(32px, 6vw, 80px)' }}>
+          <span className="label text-[12px] lg:text-[15px]"> — About</span>
         </div>
 
         <div className="about-grid">
           {/* Left — image with clip-path and floating stats */}
-          <div style={{ position: 'relative' }}>
+          <div style={{ position: 'relative', minWidth: 0 }}>
             <div
               ref={imageWrapRef}
               className="about-image-wrap"
@@ -107,7 +107,7 @@ export default function About() {
                 willChange: 'clip-path'
               }}
             >
-              <div className="about-image-frame h-150">
+              <div className="about-image-frame">
                 {/* Real portrait photo */}
                 <div
                   style={{
@@ -156,16 +156,16 @@ export default function About() {
               whileInView={{ opacity: 1, scale: 1, x: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ delay: 0.2, duration: 0.6, type: 'spring' }}
+              className="absolute top-[15%] left-[-15px] md:left-[-50px]"
               style={{
-                position: 'absolute', top: '15%', left: '-30px',
                 background: 'var(--surface-2)', border: '1px solid var(--border)',
-                padding: '16px 20px', borderRadius: '12px',
+                padding: 'clamp(8px, 2vw, 16px) clamp(20px, 2.5vw, 20px)', borderRadius: '12px',
                 display: 'flex', flexDirection: 'column', alignItems: 'center',
                 boxShadow: '0 12px 40px rgba(0,0,0,0.5)',
                 zIndex: 10
               }}
             >
-              <div style={{ fontSize: '26px', fontWeight: 800, color: 'var(--accent)', fontFamily: 'var(--font-display)', lineHeight: 1 }}>
+              <div className='text-[18px] lg:text-[26px]' style={{ fontWeight: 800, color: 'var(--accent)', fontFamily: 'var(--font-display)', lineHeight: 1 }}>
                 <span ref={(el) => { if (el) statsRef.current[0] = el; }} data-target="7.9">7</span>+
               </div>
               <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.1em', marginTop: 4 }}>CGPA</div>
@@ -176,16 +176,16 @@ export default function About() {
               whileInView={{ opacity: 1, scale: 1, x: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ delay: 0.4, duration: 0.6, type: 'spring' }}
+              className="absolute bottom-[25%] right-[-15px] md:right-[70px]"
               style={{
-                position: 'absolute', bottom: '25%', right: '50px',
                 background: 'var(--surface-2)', border: '1px solid var(--border)',
-                padding: '16px 20px', borderRadius: '12px',
+                padding: 'clamp(8px, 2vw, 16px) clamp(10px, 2.5vw, 20px)', borderRadius: '12px',
                 display: 'flex', flexDirection: 'column', alignItems: 'center',
                 boxShadow: '0 12px 40px rgba(0,0,0,0.5)',
                 zIndex: 10
               }}
             >
-              <div style={{ fontSize: '26px', fontWeight: 800, color: 'var(--accent)', fontFamily: 'var(--font-display)', lineHeight: 1 }}>
+              <div className='text-[18px] lg:text-[26px]' style={{ fontWeight: 800, color: 'var(--accent)', fontFamily: 'var(--font-display)', lineHeight: 1 }}>
                 <span ref={(el) => { if (el) statsRef.current[1] = el; }} data-target="3">3</span>+
               </div>
               <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.1em', marginTop: 4 }}>Projects</div>
@@ -196,20 +196,20 @@ export default function About() {
           {/* Right — content */}
           <div className="about-content">
             <div style={{ marginBottom: 32 }}>
-              <span className="label">THE PERSON BEHIND THE CODE</span>
+              <span className="label text-[10px] lg:text-[13px]">THE PERSON BEHIND THE CODE</span>
             </div>
-            <h2 className="about-title" style={{ margin: '0 0 40px' }}>
+            <h2 className="about-title" style={{ margin: '0 0 20px' }}>
               Developer<br />
               by <span style={{ color: 'var(--accent)' }}>craft</span>
             </h2>
 
-            <div style={{ marginBottom: 48, display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div className='w-[100%] mb-10' style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {BIO_LINES.map((line, i) => (
                 <div key={i} style={{ overflow: 'hidden', paddingBottom: '2px' }}>
                   <div
                     ref={(el) => { if (el) linesRef.current[i] = el; }}
+                    className='text-[15px] lg:text-[18px] '
                     style={{
-                      fontSize: 'clamp(17px, 1.6vw, 20px)',
                       lineHeight: 1.6,
                       color: 'var(--text-secondary)',
                       fontWeight: 300,

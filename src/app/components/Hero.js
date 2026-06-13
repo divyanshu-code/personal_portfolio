@@ -128,7 +128,7 @@ export default function Hero() {
         position: 'absolute', top: '-15%', right: '-8%',
         width: 800, height: 800,
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(0,245,212,0.07) 0%, transparent 65%)',
+        background: 'radial-gradient(circle, rgba(0, 245, 212, 0.1) 0%, transparent 65%)',
         filter: 'blur(60px)',
         pointerEvents: 'none',
         animation: 'heroOrbFloat 10s ease-in-out infinite',
@@ -137,7 +137,7 @@ export default function Hero() {
         position: 'absolute', bottom: '5%', left: '-12%',
         width: 500, height: 500,
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(0,245,212,0.04) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(0, 245, 212, 0.1) 0%, transparent 70%)',
         filter: 'blur(80px)',
         pointerEvents: 'none',
         animation: 'heroOrbFloat 14s ease-in-out infinite reverse',
@@ -147,8 +147,8 @@ export default function Hero() {
       <div aria-hidden="true" style={{
         position: 'absolute', inset: 0,
         backgroundImage:
-          'linear-gradient(rgba(0,245,212,0.025) 1px, transparent 1px),' +
-          'linear-gradient(90deg, rgba(0,245,212,0.025) 1px, transparent 1px)',
+          'linear-gradient(rgba(0, 245, 212, 0.04) 1px, transparent 1px),' +
+          'linear-gradient(90deg, rgba(0,245,212,0.04) 1px, transparent 1px)',
         backgroundSize: '60px 60px',
         pointerEvents: 'none',
       }} />
@@ -156,7 +156,7 @@ export default function Hero() {
       <div className="h-eyebrow" style={{
         display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24,
       }}>
-        <span className="w-[5vw]" style={{ height: 1, background: 'var(--accent)', display: 'block', flexShrink: 0 }} />
+        <span className="lg:w-[3vw] w-[7vw]" style={{ height: 1, background: 'var(--accent)', display: 'block', flexShrink: 0 }} />
         <span className="label lg:text-[10px] text-[8px]">Available for work</span>
         <span style={{
           marginLeft: 0,
@@ -178,7 +178,7 @@ export default function Hero() {
           <span className="label lg:text-[13px] text-[10px] ml-10 lg:ml-0" style={{ color: 'var(--text-muted)' }}>I am a</span>
           <span
             ref={roleRef}
-            className='lg:text-[20px] text-[18px]'
+            className='lg:text-[22px] text-[16px]'
             style={{
               fontFamily: 'var(--font-display)',
               fontWeight: 700,
@@ -201,7 +201,7 @@ export default function Hero() {
             lineHeight: 0.91,
             letterSpacing: '-0.05em', 
             color: 'var(--text-primary)',
-            margin: '0 0 20px',
+            margin: '0 0 10px',
           }}
         >
           Divyanshu<span style={{ color: 'var(--accent)' }}>.</span>
@@ -209,10 +209,9 @@ export default function Hero() {
 
         {/* Intro */}
         <p
-          className="h-intro"
+          className="h-intro lg:text-[17px] text-[10px]"
           style={{
             maxWidth: 520,
-            fontSize: 'clamp(16px, 2vw, 18px)',
             lineHeight: 1.85,
             color: 'var(--text-secondary)',
             fontWeight: 300,
@@ -220,7 +219,7 @@ export default function Hero() {
           }}
         >
           I build full-stack web apps and AI-powered systems — 
-          from production RAG pipelines to responsive React frontends. Every detail matters.
+          from production RAG pipelines to responsive React frontends. <br /> Every detail matters.
         </p>
 
         {/* CTA row */}
@@ -228,7 +227,7 @@ export default function Hero() {
           <a
             href="#projects"
             id="hero-cta-projects"
-            className="btn-primary text-[10px] rounded-full"
+            className="btn-primary lg:text-[10px] text-[8px] rounded-full"
             style={{ fontFamily: 'var(--font-display)', textDecoration: 'none' }}
           >
             View Projects
@@ -244,9 +243,9 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             download="Divyanshu_Bisht_Resume.pdf"
+            className="lg:text-[10px] text-[8px]"
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: '10px',
               fontWeight: 700,
               color: 'var(--accent)',
               textDecoration: 'none',
@@ -293,16 +292,16 @@ export default function Hero() {
             <div key={label}>
               <div style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(36px, 6vw, 42px)',
                 fontWeight: 800,
                 letterSpacing: '-0.04em',
                 color: 'var(--text-primary)',
                 lineHeight: 1,
-              }}>
+              }}
+              className="lg:text-[35px] text-[25px]"
+              >
                 {n}<span style={{ color: 'var(--accent)' }}>{s}</span>
               </div>
-              <div style={{
-                fontSize: 11,
+              <div className='lg:text-[11px] text-[9px]' style={{
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
                 color: 'var(--text-muted)',
