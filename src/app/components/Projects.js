@@ -253,15 +253,15 @@ export default function Projects() {
 
                   <div className="px-5 mt-2 md:mt-4">
                     <div className="project-card-num text-[var(--accent)] text-[12px] md:text-[13px] font-bold mb-2">{p.num}</div>
-                    <h3 className="project-card-title font-display lg:text-[25px] text-[18px] font-bold text-[var(--text-primary)] mb-2 md:mb-3">{p.title}</h3>
-                    <p className="project-card-desc text-[var(--text-secondary)] leading-[1.6] mb-4 md:mb-5 text-[13px] lg:text-[15px] line-clamp-4 md:line-clamp-none">{p.desc}</p>
+                    <h3 className="project-card-title font-display lg:text-[25px] text-[19px] font-bold text-[var(--text-primary)] mb-2 md:mb-3">{p.title}</h3>
+                    <p className="project-card-desc text-[var(--text-secondary)] leading-[1.6] mb-4 md:mb-5 text-[14px] lg:text-[15px] line-clamp-4 md:line-clamp-none">{p.desc}</p>
                     <div className="project-card-tags flex gap-2 flex-wrap mb-6">
                       {p.tags.map((t) => (
                         <span key={t} className="project-tag px-3 py-1 bg-[rgba(255,255,255,0.03)] border border-[var(--border)] rounded-full text-[11px] md:text-[12px] text-[var(--text-muted)]">{t}</span>
                       ))}
                     </div>
                     <button
-                      className="project-card-link bg-transparent border-none text-[var(--text-primary)] flex items-center gap-2 text-[10px]  font-semibold cursor-pointer p-0"
+                      className="project-card-link bg-transparent border-none text-[var(--text-primary)] flex items-center gap-2 lg:text-[12px] text-[10px] font-semibold cursor-pointer p-0"
                       onClick={() => setSelectedProject(p)}
                     >
                       View details
@@ -334,9 +334,11 @@ export default function Projects() {
               {/* Overlay Content */}
 
               <div className="p-6 md:p-12">
-                <div style={{ color: 'var(--accent)', fontSize: '14px', fontWeight: 700, marginBottom: '12px' }}>Project {selectedProject.num}</div>
-                <h2 className="text-[32px] md:text-[48px]" style={{ fontFamily: 'var(--font-display)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '24px', lineHeight: 1 }}>{selectedProject.title}</h2>
-                <p className="text-[15px] md:text-[18px]" style={{ color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '40px' }}>
+                <div style={{ color: 'var(--accent)', fontSize: '12px', fontWeight: 700, marginBottom: '12px' }}>Project {selectedProject.num}</div>
+
+                <h2 className="text-[22px] md:text-[30px]" style={{ fontFamily: 'var(--font-display)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '24px', lineHeight: 1 }}>{selectedProject.title}</h2>
+
+                <p className="text-[12px] md:text-[18px]" style={{ color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '40px' }}>
                   {selectedProject.details}
                 </p>
 
@@ -344,7 +346,7 @@ export default function Projects() {
                   <h4 style={{ color: 'var(--text-primary)', fontSize: '16px', marginBottom: '16px', fontWeight: 600 }}>Tech Stack</h4>
                   <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                     {selectedProject.tags.map((t) => (
-                      <span key={t} style={{ padding: '8px 16px', background: 'var(--base-2)', border: '1px solid var(--border)', borderRadius: '100px', fontSize: '14px', color: 'var(--text-secondary)' }}>{t}</span>
+                      <span className='text-[11px] md:text-[14px]'  key={t} style={{ padding: '8px 16px', background: 'var(--base-2)', border: '1px solid var(--border)', borderRadius: '100px', color: 'var(--text-secondary)' }}>{t}</span>
                     ))}
                   </div>
                 </div>
@@ -354,7 +356,7 @@ export default function Projects() {
                     href={selectedProject.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary"
+                    className="btn-primary text-[12px] md:text-[14px]"
                     style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
                   >
                     View Live Site
@@ -366,6 +368,7 @@ export default function Projects() {
                     href={selectedProject.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className='text-[12px] md:text-[14px]'
                     style={{ padding: '16px 32px', color: 'var(--text-primary)', border: '1px solid var(--border)', borderRadius: '100px', textDecoration: 'none', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '8px' }}
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
