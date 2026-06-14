@@ -761,8 +761,6 @@ body {
 .skills-marquee-wrap {
   overflow: hidden;
   border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 20px 0;
   margin-bottom: 80px;
 }
 
@@ -779,7 +777,6 @@ body {
   gap: 12px;
   white-space: nowrap;
   font-family: var(--font-display);
-  font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.05em;
   color: var(--text-muted);

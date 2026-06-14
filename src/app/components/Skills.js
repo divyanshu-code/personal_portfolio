@@ -144,7 +144,7 @@ export default function Skills() {
     <section id="skills" className="section" style={{ overflow: 'hidden' }}>
 
       {/* GSAP Ticker Marquee */}
-      <div className="skills-marquee-wrap reveal visible" style={{ borderBottom: 'none', marginBottom: '40px' }}>
+      <div className="skills-marquee-wrap reveal visible lg:pt-4 pt-2 mb-50 " >
         <div
           ref={marqueeRef}
           style={{ display: 'flex', whiteSpace: 'nowrap', width: '100%', overflow: 'hidden' }}
@@ -152,7 +152,7 @@ export default function Skills() {
         >
           <div ref={marqueeInnerRef} style={{ display: 'flex', gap: '48px', paddingRight: '48px' }}>
             {SKILLS.map((s, i) => (
-              <span key={i} className="skills-marquee-item">
+              <span key={i} className="skills-marquee-item text-[13px] lg:text-[15px]">
                 <span className="skills-marquee-dot" />
                 {s.name}
               </span>
@@ -161,14 +161,14 @@ export default function Skills() {
         </div>
       </div>
 
-      <div className="section-inner" style={{ paddingTop: '20px' }}>
+      <div className="section-inner lg:pt-15" >
         <div style={{ marginBottom: 40 }}>
-          <span className="label reveal visible">— Expertise</span>
+          <span className="label reveal visible text-[12px] lg:text-[15px]">— Expertise</span>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-[60px] items-center">
 
-          <div className="reveal visible" style={{ height: '500px', width: '80%', position: 'relative' }}>
+          <div className="reveal visible w-full lg:mt-20 lg:w-[80%] h-[350px] md:h-[400px] lg:h-[500px] relative mx-auto lg:mx-0">
             <div style={{
               position: 'absolute', inset: 0,
               background: 'radial-gradient(circle at center, rgba(0,245,212,0.08) 0%, transparent 60%)',
@@ -189,7 +189,7 @@ export default function Skills() {
             </h2>
 
             {/* Category Pills */}
-            <div className="reveal visible" style={{ display: 'flex', gap: 12, marginBottom: 48, flexWrap: 'wrap' }}>
+            <div className="reveal visible flex flex-wrap gap-3 mb-10 lg:mb-12">
               {CATEGORIES.map(cat => (
                 <button
                   key={cat}
@@ -201,11 +201,12 @@ export default function Skills() {
                     borderColor: activeCategory === cat ? 'var(--accent)' : 'var(--border-lit)',
                     background: activeCategory === cat ? 'var(--accent-dim)' : 'transparent',
                     color: activeCategory === cat ? 'var(--accent)' : 'var(--text-secondary)',
-                    fontSize: '13px',
                     fontWeight: 600,
                     cursor: 'pointer',
                     transition: 'all 0.3s var(--ease-out-expo)'
                   }}
+
+                  className='text-[11px] lg:text-[13px]'
                 >
                   {cat}
                 </button>
@@ -213,7 +214,7 @@ export default function Skills() {
             </div>
 
             {/* Framer Motion Filtered Grid */}
-            <motion.div layout style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
+            <motion.div layout className="flex flex-wrap gap-3 lg:gap-4 justify-center lg:justify-start">
               <AnimatePresence mode="popLayout">
                 {filteredSkills.map(skill => (
                   <motion.div
@@ -229,10 +230,11 @@ export default function Skills() {
                       border: '1px solid var(--border)',
                       borderRadius: '8px',
                       color: 'var(--text-primary)',
-                      fontSize: '14px',
                       fontFamily: 'var(--font-body)',
                       fontWeight: 500
                     }}
+
+                    className='text-[13px] lg:text-[14px]'
                   >
                     {skill.name}
                   </motion.div>
@@ -243,15 +245,6 @@ export default function Skills() {
 
         </div>
       </div>
-
-      {/* Responsive overrides via inline style block for this grid specifically */}
-      <style>{`
-        @media (max-width: 1024px) {
-          #skills .section-inner > div:last-child {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
