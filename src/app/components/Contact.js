@@ -52,7 +52,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="contact-section" ref={sectionRef} aria-label="Contact" style={{ paddingBottom: 25 }}>
+    <section id="contact" className="contact-section w-full px-5 sm:px-6 md:px-16 py-16 md:py-24 lg:py-28 overflow-hidden" ref={sectionRef} aria-label="Contact" style={{ paddingBottom: 25 }}>
       {/* Background orb */}
       <div style={{
         position: 'absolute', bottom: -200, right: -200,
@@ -63,18 +63,18 @@ export default function Contact() {
         pointerEvents: 'none',
       }} aria-hidden="true" />
 
-      <div className="contact-inner">
+      <div className="contact-inner flex flex-col  lg:grid lg:grid-cols-2 gap-12 lg:gap-[120px] w-full max-w-full">
         {/* Left */}
         <div>
-          <span className="label reveal" style={{ marginBottom: 24, display: 'block' }}>— Contact</span>
-          <h2 className="contact-big reveal reveal-delay-1">
+          <span className="label text-[12px] lg:text-[15px] mb-[50px] lg:mb-[80px]" style={{ display: 'block' }}>— Contact</span>
+          <h2 className="contact-big  reveal-delay-1 text-[47px] lg:text-[80px]">
             Let's<br />build<br />
             <span>together.</span>
           </h2>
 
           <a
             href="mailto:divyanshubisht5734@gmail.com"
-            className="contact-email reveal reveal-delay-2"
+            className="contact-email reveal-delay-2 pt-20 text-[12px] lg:text-[15px]"
             id="contact-email-link"
           >
             divyanshubisht5734@gmail.com
@@ -84,7 +84,7 @@ export default function Contact() {
           </a>
 
           {/* Social links */}
-          <div className="contact-socials reveal reveal-delay-3">
+          <div className="contact-socials mt-5 lg:mt-10 reveal-delay-3">
             <a
               href="https://github.com/divyanshu-code"
               target="_blank"
@@ -127,12 +127,12 @@ export default function Contact() {
 
         {/* Right — Form */}
         <form
-          className="contact-form reveal reveal-delay-2 "
+          className="contact-form reveal reveal-delay-2  max-w-full"
           onSubmit={handleSubmit}
           noValidate
           aria-label="Contact form"
         >
-          <div className="form-group ">
+          <div className="form-group">
             <label htmlFor="contact-name" className="form-label">Name</label>
             <input
               id="contact-name"
@@ -145,7 +145,7 @@ export default function Contact() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="contact-email" className="form-label">Email</label>
+            <label htmlFor="contact-email text-[50px]" className="form-label">Email</label>
             <input
               id="contact-email"
               name="email"
@@ -228,24 +228,27 @@ export default function Contact() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: 2,
+        width: '100%',
+        paddingTop: '15px'
       }}>
         <p style={{
           fontFamily: 'var(--font-display)',
-          fontSize: 12,
           letterSpacing: '0.12em',
           color: 'var(--accent)',
           textTransform: 'uppercase',
           margin: 0,
-        }}>
+        }}
+        className='text-[10px] lg:text-[12px]'
+        >
           Built from scratch by Divyanshu Bisht
         </p>
         <p style={{
-          fontSize: 10,
           color: 'var(--muted)',
           letterSpacing: '0.08em',
           margin: 0,
-        }}>
+        }} 
+        className='text-[8px] lg:text-[10px]'
+        >
           © {new Date().getFullYear()} Divyanshu Bisht. All rights reserved.
         </p>
       </footer>

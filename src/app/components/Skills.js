@@ -38,14 +38,15 @@ const SKILLS = [
   { name: 'Streamlit', category: 'AI & ML' },
 
   // Tools
-  { name: 'Git', category: 'Tools' },
-  { name: 'GitHub', category: 'Tools' },
-  { name: 'Vercel', category: 'Tools' },
-  { name: 'Postman', category: 'Tools' },
-  { name: 'GitHub Actions', category: 'Tools' },
+  { name: 'Git', category: 'DevOps & Tools' },
+  { name: 'GitHub', category: 'DevOps & Tools' },
+  { name: 'Vercel', category: 'DevOps & Tools' },
+  { name: 'Postman', category: 'DevOps & Tools' },
+  { name: 'GitHub Actions', category: 'DevOps & Tools' },
+  { name: 'Docker', category: 'DevOps & Tools' },  
 ];
 
-const CATEGORIES = ['All', 'Frontend', 'Backend', 'Tools' , 'AI & ML'];
+const CATEGORIES = ['All', 'Frontend', 'Backend', 'DevOps & Tools' , 'AI & ML'];
 
 // 3D Globe Component
 function Globe({ activeCategory }) {
@@ -144,7 +145,7 @@ export default function Skills() {
     <section id="skills" className="section" style={{ overflow: 'hidden' }}>
 
       {/* GSAP Ticker Marquee */}
-      <div className="skills-marquee-wrap reveal visible lg:pt-4 pt-2 mb-50 " >
+      <div className="skills-marquee-wrap reveal visible lg:pt-3 pt-2 mb-50 " >
         <div
           ref={marqueeRef}
           style={{ display: 'flex', whiteSpace: 'nowrap', width: '100%', overflow: 'hidden' }}

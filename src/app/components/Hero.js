@@ -209,7 +209,7 @@ export default function Hero() {
 
         {/* Intro */}
         <p
-          className="h-intro lg:text-[17px] text-[10px]"
+          className="h-intro px-1 lg:text-[17px] text-[10.9px]"
           style={{
             maxWidth: 520,
             lineHeight: 1.85,
@@ -219,7 +219,7 @@ export default function Hero() {
           }}
         >
           I build full-stack web apps and AI-powered systems — 
-          from production RAG pipelines to responsive React frontends. <br /> Every detail matters.
+          from production RAG pipelines to responsive frontends. <br /> Every detail matters.
         </p>
 
         {/* CTA row */}

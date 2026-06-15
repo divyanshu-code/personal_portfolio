@@ -184,14 +184,14 @@ export default function Projects() {
       <section
         id="projects"
         ref={sectionRef}
-        className="pt-[80px] md:pt-[120px] relative bg-[var(--base-2)] border-t border-[var(--border)]"
+        className="pt-[80px] lg:px-4 md:pt-[120px] relative bg-[var(--base-2)] border-t border-[var(--border)]"
         aria-label="Projects"
       >
         <div className="px-5 md:px-12">
           <div className="projects-header reveal flex flex-col md:flex-row justify-between items-start md:items-end mb-6 gap-2 md:gap-0">
             <div>
-              <span className="label mb-2 block text-[12px] lg:text-[15px]"> — Selected Work</span>
-              <h2 className="display-md text-[var(--text-primary)] m-0">
+              <span className="label mb-5 block text-[12px] lg:text-[15px]"> — Selected Work</span>
+              <h2 className="display-md  text-[var(--text-primary)] ">
                 Things I've<br />
                 <span style={{ color: 'var(--accent)' }}>built</span>
               </h2>
