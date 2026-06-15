@@ -16,7 +16,9 @@ export async function POST(req) {
     }
 
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
@@ -24,7 +26,7 @@ export async function POST(req) {
     });
 
     await transporter.sendMail({
-      from: `"${name}"`,
+      from: `"${name}" <${process.env.EMAIL_USER}>`,
       replyTo: email,
       to: process.env.EMAIL_USER,
       subject: `Portfolio Contact — ${name}`,
@@ -39,8 +41,9 @@ export async function POST(req) {
     return NextResponse.json({ success: true });
 
   } catch (error) {
+    console.log("FULL ERROR:", error.message);
     return NextResponse.json(
-      { error: 'Failed to send message' },
+      { error: error.message },
       { status: 500 }
     );
   }
