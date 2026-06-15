@@ -2,6 +2,7 @@ import { Space_Grotesk, Syne } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space",
@@ -43,6 +44,7 @@ export default function RootLayout({ children }) {
           pauseOnHover
         />
         {children}
+        <GoogleAnalytics gaId="G-6NKZTE6J0B" />
       </body>
     </html>
   );
