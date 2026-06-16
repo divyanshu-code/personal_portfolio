@@ -152,7 +152,7 @@ export default function Hero() {
         pointerEvents: 'none',
       }} />
 
-      <div className="h-eyebrow lg:mb-5 mb-15" style={{
+      <div className="h-eyebrow lg:mb-5 mb-18" style={{
         display: 'flex', alignItems: 'center', gap: 12, 
       }}>
         <span className="lg:w-[3vw] w-[7vw]" style={{ height: 1, background: 'var(--accent)', display: 'block', flexShrink: 0 }} />
