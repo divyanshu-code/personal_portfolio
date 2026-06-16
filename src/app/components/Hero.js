@@ -114,11 +114,10 @@ export default function Hero() {
       style={{
         position: 'relative',
         width: '100%',
-        minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        padding: 'clamp(100px, 10vh, 140px) clamp(24px, 5vw, 80px) clamp(80px, 8vh, 120px)',
+        padding: 'clamp(100px, 10vh, 140px) clamp(20px, 5vw, 80px) clamp(80px, 8vh, 120px)',
         overflow: 'hidden',
         background: 'var(--base)',
       }}
@@ -153,8 +152,8 @@ export default function Hero() {
         pointerEvents: 'none',
       }} />
 
-      <div className="h-eyebrow" style={{
-        display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24,
+      <div className="h-eyebrow lg:mb-5 mb-15" style={{
+        display: 'flex', alignItems: 'center', gap: 12, 
       }}>
         <span className="lg:w-[3vw] w-[7vw]" style={{ height: 1, background: 'var(--accent)', display: 'block', flexShrink: 0 }} />
         <span className="label lg:text-[10px] text-[8px]">Available for work</span>
